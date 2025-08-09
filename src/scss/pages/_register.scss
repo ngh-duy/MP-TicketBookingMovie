@@ -1,0 +1,110 @@
+@import "../helpers/_mixin";
+@import "../helpers/_variable";
+
+.register {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  .register-container {
+    border: 1px solid #ccc;
+    width: 350px;
+    height: 510px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    border-radius: 10px;
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      width: 100%;
+      height: 100%;
+      h1 {
+        font-family: "Libertinus Serif", serif;
+        font-weight: 700;
+        font-size: 35px;
+      }
+      .input-group {
+        position: relative;
+        z-index: 0;
+        width: 100%;
+        padding-left: 50px;
+        padding-right: 50px;
+        label {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          left: 50px;
+          z-index: -1;
+          color: rgba(0, 0, 0, 0.26);
+          transition: all 0.3s ease;
+          pointer-events: none;
+        }
+        input {
+          border: none;
+          border-bottom: 1px solid #0d0c01f4;
+          background: transparent;
+          width: 100%;
+          &:hover + label,
+          &:valid + label {
+            outline: none;
+            color: rgb(0, 0, 11);
+            top: -10%;
+            font-size: 14px;
+            font-weight: 300;
+          }
+          &:focus {
+            box-shadow: none;
+            border-bottom: 2px solid #878787f4;
+          }
+        }
+        i {
+          position: absolute;
+          right: 50px;
+          top: 50%;
+          transform: translateY(-50%);
+          color: rgba(0, 0, 0, 0.26);
+        }
+      }
+      .checkPassword {
+        font-size: 13px;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        padding-left: 50px;
+        padding-right: 50px;
+        margin-top: -15px;
+        font-weight: 350;
+        input {
+          transform: scale(80%);
+          margin-right: 5px;
+          border: 1px solid black;
+          &:focus {
+            color: rgb(0, 0, 0);
+            box-shadow: none;
+          }
+          &:checked {
+            color: rgb(0, 0, 0);
+          }
+        }
+      }
+      button {
+        font-size: medium;
+        font-weight: 600;
+        &:hover {
+          text-shadow: 7px 7px 10px rgba(50, 7, 100, 0.3); // x, y, bong, mau
+        }
+      }
+      .registerAccount {
+        display: flex;
+        font-size: 13px;
+        justify-content: space-around;
+        p {
+          margin-right: 5px;
+          font-weight: 350;
+        }
+      }
+    }
+  }
+}

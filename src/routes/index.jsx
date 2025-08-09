@@ -9,6 +9,8 @@ import User from "../pages/AdminTemplate/User";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 
+import Modal from "../pages/_components/modal";
+
 import { Route } from "react-router-dom";
 
 const routes = [
@@ -17,7 +19,7 @@ const routes = [
     element: HomeTemplate,
     nested: [
       {
-        path: "",
+        path: "home",
         element: Home,
       },
       {
@@ -47,7 +49,12 @@ const routes = [
   {
     path: "register",
     element: Register,
-  }
+  },
+    {
+    path: "modal",
+    element: Modal,
+  },
+
 ];
 export const renderRoute = () => {
   return routes.map((router) => {

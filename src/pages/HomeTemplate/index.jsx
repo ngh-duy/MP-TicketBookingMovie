@@ -1,6 +1,6 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import Header from "./_component/Header";
+import Header from "./_components/Header";
 export default function HomeTemplate() {
   return (
     <>

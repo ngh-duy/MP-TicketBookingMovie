@@ -1,0 +1,109 @@
+.carousel {
+  position: relative;
+
+  .carousel-img {
+    position: relative;
+    height: 700px;
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: fill;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background-color: rgba(0, 0, 0, 0.26);
+    }
+    h1 {
+      position: absolute;
+      bottom: 50px;
+      left: 40px;
+      font-size: 30px;
+      font-weight: 700;
+      color: white;
+      z-index: 10;
+    }
+    .star {
+      display: flex;
+      position: absolute;
+      bottom: 20px;
+      left: 40px;
+      z-index: 10;
+      svg {
+        height: 25px;
+        width: 25px;
+        margin-left: 5px;
+        fill: yellow;
+      }
+    }
+    .groupImg {
+      position: absolute;
+      z-index: 10;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      justify-content: space-between;
+
+      .titleImg {
+        width: 100px;
+        height: 110px;
+        margin-left: 10px;
+        position: relative;
+        img {
+          object-fit: fill;
+          border-radius: 7px;
+          filter: brightness(1.1);
+        }
+      }
+      .checkCurrentImg {
+        &::after {
+          content: "";
+          position: absolute;
+          width: 10px;
+          height: 10px;
+          background-color: #5bec99;
+          bottom: -15px;
+          left: 50%;
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 760px) {
+  .carousel {
+    position: relative;
+    .carousel-img {
+      position: relative;
+      height: 300px;
+      h1 {
+        padding-right: 30px;
+        position: absolute;
+        bottom: 25px;
+        left: 10px;
+        font-size: 19px;
+        font-weight: 700;
+        color: white;
+        z-index: 10;
+      }
+      .star {
+        display: flex;
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        z-index: 10;
+        svg {
+          height: 15px;
+          width: 15px;
+          margin-left: 5px;
+          fill: yellow;
+        }
+      }
+      .groupImg {
+        display: none;
+      }
+    }
+  }
+}

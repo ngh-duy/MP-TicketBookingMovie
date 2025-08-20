@@ -5,15 +5,21 @@ import { useState } from "react";
 export default function Header() {
   const [openMenu, setOpenMenu] = useState(false);
   const [itemMenu, setItemMenu] = useState({
-    menuItemTheLoai:false,
+    menuItemTheLoai: false,
     menuItemQuocGia: false,
-    menuItemNam:false
-  })
+    menuItemNam: false,
+  });
+  const [active, setActive] = useState({
+    theLoai: "",
+    quocGia: "",
+    nam: "",
+  });
+const accessToken = JSON.parse(localStorage.getItem('accessToken'));
   return (
     <header>
       <div className="header-content">
         <div className="header-group">
-          <div className="logo">
+          <NavLink to='/' className="logo">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -25,7 +31,7 @@ export default function Header() {
               ></path>
             </svg>
             <span>HDVietsub</span>
-          </div>
+          </NavLink>
           <div className="menu">
             <svg
               onClick={() => setOpenMenu(!openMenu)}
@@ -41,20 +47,37 @@ export default function Header() {
             </svg>
           </div>
         </div>
-        <div className="search">
+        <div className="search flex items-center">
           <input
             type="search"
             name="search"
             id="search"
+            width={"100%"}
             placeholder="Search..."
           />
+          {accessToken ?  <div className=""><i class="fa-solid fa-user-secret" style={{color: '#ffffff',fontSize:'200%'}}></i></div> : <NavLink to='/login'><span className=" text-white text-xl font-medium px-3">Login</span></NavLink>}
+         
+          
         </div>
+        
         {openMenu ? (
           <div className="groupMenu">
             <ul>
-              <li>Trang chủ</li>
               <li>
-                Thể loại
+                <h1>Trang chủ</h1>
+              </li>
+              <li
+                onClick={() => {
+                  setActive({ theLoai: "bg-[#363636]", quocGia: "", nam: "" });
+                  setItemMenu({
+                    ...itemMenu,
+                    menuItemTheLoai: !itemMenu.menuItemTheLoai,
+                    menuItemQuocGia: false,
+                    menuItemNam: false,
+                  });
+                }}
+              >
+                <h1 className={active.theLoai}>Thể loại</h1>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -66,8 +89,26 @@ export default function Header() {
                   ></path>
                 </svg>
               </li>
-              <li>
-                Quốc gia
+              <ul className={itemMenu.menuItemTheLoai ? "" : "hidden"}>
+                <li>Tình cảm</li>
+                <li>Kinh dị</li>
+                <li>Bi kịch</li>
+                <li>Học đường</li>
+                <li>Pháp sư</li>
+                <li>Xuyên không</li>
+              </ul>
+              <li
+                onClick={() => {
+                  setActive({ theLoai: "", quocGia: "bg-[#363636]", nam: "" });
+                  setItemMenu({
+                    ...itemMenu,
+                    menuItemTheLoai: false,
+                    menuItemQuocGia: !itemMenu.menuItemQuocGia,
+                    menuItemNam: false,
+                  });
+                }}
+              >
+                <h1 className={active.quocGia}>Quốc gia</h1>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -79,8 +120,27 @@ export default function Header() {
                   ></path>
                 </svg>
               </li>
-              <li>
-                Phim theo năm
+              <ul className={itemMenu.menuItemQuocGia ? "" : "hidden"}>
+                <li>Việt Nam</li>
+                <li>Thái Lan</li>
+                <li>HongKong</li>
+                <li>Đài Loan</li>
+                <li>Nhật Bản</li>
+                <li>Hàn Quốc</li>
+                <li>Trung Quốc</li>
+              </ul>
+              <li
+                onClick={() => {
+                  setActive({ theLoai: "", quocGia: "", nam: "bg-[#363636]" });
+                  setItemMenu({
+                    ...itemMenu,
+                    menuItemTheLoai: false,
+                    menuItemQuocGia: false,
+                    menuItemNam: !itemMenu.menuItemNam,
+                  });
+                }}
+              >
+                <h1 className={active.nam}> Phim theo năm</h1>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -92,17 +152,47 @@ export default function Header() {
                   ></path>
                 </svg>
               </li>
-              <li>Phim Reels</li>
+              <ul className={itemMenu.menuItemNam ? "" : "hidden"}>
+                <li>2025</li>
+                <li>2024</li>
+                <li>2023</li>
+                <li>2022</li>
+                <li>2021</li>
+                <li>2020</li>
+                <li>2019</li>
+                <li>2018</li>
+                <li>2017</li>
+                <li>2016</li>
+              </ul>
+              <li>
+                <h1>Phim Reels</h1>
+              </li>
             </ul>
           </div>
         ) : (
           ""
         )}
       </div>
-      <nav>
+      <nav >
         <ul>
-          <li>Trang chủ</li>
-          <li onClick={()=>setItemMenu({...itemMenu,menuItemTheLoai:true, menuItemQuocGia:false, menuItemNam:false})}>
+          <li  onClick={() =>
+              setItemMenu({
+                ...itemMenu,
+                menuItemTheLoai: false,
+                menuItemQuocGia: false,
+                menuItemNam: false,
+              })
+            } >Trang chủ</li>
+          <li
+            onClick={() =>
+              setItemMenu({
+                ...itemMenu,
+                menuItemTheLoai: true,
+                menuItemQuocGia: false,
+                menuItemNam: false,
+              })
+            }
+          >
             Thể loại
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -115,7 +205,16 @@ export default function Header() {
               ></path>
             </svg>
           </li>
-          <li onClick={()=>setItemMenu({...itemMenu,menuItemTheLoai:false, menuItemQuocGia:true, menuItemNam:false})}>
+          <li
+            onClick={() =>
+              setItemMenu({
+                ...itemMenu,
+                menuItemTheLoai: false,
+                menuItemQuocGia: true,
+                menuItemNam: false,
+              })
+            }
+          >
             Quốc gia{" "}
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -128,7 +227,16 @@ export default function Header() {
               ></path>
             </svg>
           </li>
-          <li onClick={()=>setItemMenu({...itemMenu,menuItemTheLoai:false, menuItemQuocGia:false, menuItemNam:true})}>
+          <li
+            onClick={() =>
+              setItemMenu({
+                ...itemMenu,
+                menuItemTheLoai: false,
+                menuItemQuocGia: false,
+                menuItemNam: true,
+              })
+            }
+          >
             Phim theo năm
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -141,40 +249,60 @@ export default function Header() {
               ></path>
             </svg>
           </li>
-          <li>Phim Reels</li>
+          <li  onClick={() =>
+              setItemMenu({
+                ...itemMenu,
+                menuItemTheLoai: false,
+                menuItemQuocGia: false,
+                menuItemNam: false,
+              })
+            }>Phim Reels</li>
         </ul>
+        
       </nav>
       <div className="menuItem">
-        {itemMenu.menuItemTheLoai ? <div className="menuItemTheLoai ">
-          <ul>
-            <li>Tình cảm</li>
-            <li>Kinh dị</li>
-            <li>Bi kịch</li>
-            <li>Học đường</li>
-            <li>Pháp sư</li>
-            <li>Xuyên không</li>
-          </ul>
-        </div> : ''}
-        {itemMenu.menuItemQuocGia ? <div className="menuItemQuocGia ">
-          <ul>
-            <li>Tình cảm</li>
-            <li>Kinh dị</li>
-            <li>Bi kịch</li>
-            <li>Học đường</li>
-            <li>Pháp sư</li>
-            <li>Xuyên không</li>
-          </ul>
-        </div> : ''}
-        {itemMenu.menuItemNam ? <div className="menuItemNam ">
-          <ul>
-            <li>Tình cảm</li>
-            <li>Kinh dị</li>
-            <li>Bi kịch</li>
-            <li>Học đường</li>
-            <li>Pháp sư</li>
-            <li>Xuyên không</li>
-          </ul>
-        </div> : ''}
+        {itemMenu.menuItemTheLoai ? (
+          <div className="menuItemTheLoai ">
+            <ul>
+              <li>Tình cảm</li>
+              <li>Kinh dị</li>
+              <li>Bi kịch</li>
+              <li>Học đường</li>
+              <li>Pháp sư</li>
+              <li>Xuyên không</li>
+            </ul>
+          </div>
+        ) : (
+          ""
+        )}
+        {itemMenu.menuItemQuocGia ? (
+          <div className="menuItemQuocGia ">
+            <ul>
+              <li>Tình cảm</li>
+              <li>Kinh dị</li>
+              <li>Bi kịch</li>
+              <li>Học đường</li>
+              <li>Pháp sư</li>
+              <li>Xuyên không</li>
+            </ul>
+          </div>
+        ) : (
+          ""
+        )}
+        {itemMenu.menuItemNam ? (
+          <div className="menuItemNam ">
+            <ul>
+              <li>Tình cảm</li>
+              <li>Kinh dị</li>
+              <li>Bi kịch</li>
+              <li>Học đường</li>
+              <li>Pháp sư</li>
+              <li>Xuyên không</li>
+            </ul>
+          </div>
+        ) : (
+          ""
+        )}
       </div>
     </header>
   );

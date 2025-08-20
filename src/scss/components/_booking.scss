@@ -1,0 +1,229 @@
+.titleDetail {
+  display: flex;
+  justify-content: end;
+  position: relative;
+  .title {
+    background-image: linear-gradient(
+      to right,
+      black 0%,
+      #1e1e1e 20%,
+      rgba(49, 49, 49, 0.977) 40%,
+      rgba(49, 49, 49, 0.74) 70%,
+      rgba(255, 255, 255, 0.155) 100%
+    );
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-width: 0 20px;
+    width: 100%;
+    height: 100%;
+    place-content: center;
+    .movieName {
+      width: 52%;
+      display: flex;
+
+      margin: 10px 30px;
+      padding-top: 20px;
+    }
+    > p {
+      display: -webkit-box;
+      -webkit-line-clamp: 7;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      color: #aaa;
+      margin: 25px 30px;
+      text-align: justify;
+      width: 52%;
+      font-style: italic;
+      font-size: 20px;
+    }
+    article {
+      font-size: 20px;
+      font-weight: 500;
+      color: #aaa;
+      margin: 40px;
+      line-height: 30px;
+      > div {
+        > span {
+          color: white;
+          font-size: 20px;
+        }
+        > p {
+          padding-top: 20px;
+        }
+        padding-right: 100px;
+      }
+    }
+  }
+  .imgDetail {
+    width: 100%;
+    height: 800px;
+    right: 0;
+    display: flex;
+    justify-content: end;
+    img {
+      width: 70%;
+      height: 100%;
+      object-fit: fill;
+    }
+  }
+  .iconPlayer {
+    position: absolute;
+    top: 40%;
+    right: 13%;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: #5cb85c52; /* màu nền xanh */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: pulseRing 1s infinite;
+
+    svg {
+      z-index: 1;
+    }
+  }
+  .overlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+          background-color: #1e1e1ed2;
+    .trailer {
+      // transform: translate(-50%, -50%);
+      z-index: 30;
+
+      display: flex;
+      justify-content:center;
+      align-items: center;
+      video {
+        width: 700px;
+        height: 500px;
+        width: 100%;
+        height: 100%;
+        object-fit: fill;
+      }
+    }
+  }
+
+  /* Hiệu ứng sóng tỏa */
+  @keyframes pulseRing {
+    0% {
+      box-shadow: 0 0 0 0 rgba(96, 222, 148, 0.7);
+    }
+    70% {
+      box-shadow: 0 0 0 50px rgba(46, 204, 113, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(46, 204, 113, 0);
+    }
+  }
+
+  @keyframes playyer {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+}
+@media screen and (max-width: 760px) {
+  .titleDetail {
+    display: flex;
+    flex-wrap: wrap-reverse;
+    justify-content: end;
+    position: static;
+    .title {
+      position: static;
+      background-image: linear-gradient(
+        to right,
+        black 0%,
+        #1e1e1e 20%,
+        rgba(49, 49, 49, 0.977) 40%,
+        rgba(27, 27, 27, 0.795) 70%,
+        rgba(49, 49, 49, 0.865) 100%
+      );
+      width: 100%;
+      height: 100%;
+      place-content: center;
+      margin: 0;
+      .movieName {
+        width: 100%;
+        display: flex;
+        padding-top: 30px;
+        margin: 0;
+        font-size: 35px;
+        justify-content: center;
+      }
+      > p {
+        display: -webkit-box;
+        -webkit-line-clamp: 7;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        color: #aaa;
+        text-align: justify;
+        width: 100%;
+        font-style: italic;
+        font-size: 18px;
+        margin: 0;
+        padding-top: 15px;
+        padding-right: 13px;
+        padding-left: 13px;
+      }
+      article {
+        font-size: 18px;
+        font-weight: 500;
+        color: #aaa;
+        line-height: 30px;
+        width: 100%;
+        margin: 0;
+        display: flex;
+        justify-content: space-evenly;
+        padding: 10px 0;
+        > div {
+          padding-right: 20px;
+          > span {
+            color: white;
+            font-size: 20px;
+          }
+          > p {
+            padding-top: 20px;
+          }
+        }
+      }
+    }
+    .imgDetail {
+      width: 100%;
+      height: 100%;
+      right: 0;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: fill;
+      }
+    }
+    .iconPlayer {
+      position: absolute;
+      top: 30%;
+      right: 39%;
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: #5cb85c52; /* màu nền xanh */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: pulseRing 1s infinite;
+
+      svg {
+        z-index: 1;
+      }
+    }
+  }
+}

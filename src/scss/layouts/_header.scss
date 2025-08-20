@@ -30,6 +30,7 @@ header {
     }
     .search {
       input {
+        padding: 7px;
         margin: 10px;
         border-radius: 13px;
         background-color: #282828;
@@ -45,6 +46,7 @@ header {
     ul {
       display: flex;
       li {
+        cursor: pointer;
         font-size: 16px;
         padding-left: 30px;
         display: flex;
@@ -58,13 +60,14 @@ header {
   }
   .menuItem {
     position: relative;
+    z-index: 10;
     ul {
       display: inline-block;
       background-color: rgb(55, 58, 58);
       padding: 10px 20px;
-      color:white;
+      color: white;
       li {
-        margin-bottom: 8px;
+        margin-bottom: 12px;
         font-size: 15px;
         font-weight: 470;
       }
@@ -87,8 +90,7 @@ header {
       ul {
         position: absolute;
         top: 0;
-       margin-left: 370px;
-
+        margin-left: 370px;
       }
     }
   }
@@ -131,32 +133,58 @@ header {
         background-color: #000000;
         width: 100%;
         input {
+          margin: 7px;
           border-radius: 13px;
           background-color: #282828;
           color: white;
-          width: 95%;
+          width: 93%;
+          padding: 5px;
+        }
+        input::placeholder {
+          font-size: 15px;
+          padding-left: 10px;
         }
       }
       .groupMenu {
         position: absolute;
-        z-index: 2;
+        z-index: 20;
         top: 60px;
         left: 0px;
         right: 0;
-        background-color: rgb(39, 40, 40);
-        padding-left: 25px;
+        background-color: rgb(23, 23, 27);
+
         ul {
-          padding: 10px;
           li {
+            border: none;
+            border-bottom: 1px solid rgb(60, 58, 58);
             display: flex;
             justify-content: space-between;
             align-items: center;
             font-size: 17px;
             color: rgb(249, 249, 249);
+            h1 {
+              padding-left: 25px;
+              padding-top: 15px;
+              padding-bottom: 10px;
+              width: 100%;
+              height: 100%;
+            }
             svg {
-              width: 35px;
+              border-left: 1px solid black;
+              width: 55px;
               height: 100%;
               font-weight: 900;
+              padding-right: 10px;
+              padding-left: 10px;
+            }
+          }
+          ul {
+            padding-left: 25px;
+            background-color: #333333;
+            li {
+              border: none;
+              padding: 10px;
+              font-size: 17px;
             }
           }
         }

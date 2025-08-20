@@ -2,9 +2,13 @@ import HomeTemplate from "../pages/HomeTemplate";
 import Home from "../pages/HomeTemplate/Home";
 import About from "../pages/HomeTemplate/About";
 import ListMovie from "../pages/HomeTemplate/ListMovie";
+import BookingMovie from "../pages/HomeTemplate/BookingMovie";
 
 import AdminTemplate from "../pages/AdminTemplate";
 import User from "../pages/AdminTemplate/User";
+import Dashboard from "../pages/AdminTemplate/Dashboard";
+import Profile from "../pages/AdminTemplate/Profile";
+import Movie from "../pages/AdminTemplate/Movie";
 
 import Login from "../pages/Login";
 import Register from "../pages/Register";
@@ -19,7 +23,7 @@ const routes = [
     element: HomeTemplate,
     nested: [
       {
-        path: "home",
+        path: "",
         element: Home,
       },
       {
@@ -30,6 +34,10 @@ const routes = [
         path: "list-movie",
         element: ListMovie,
       },
+      {
+        path: "booking/:maphim",
+        element: BookingMovie,
+      },
     ],
   },
   {
@@ -39,6 +47,18 @@ const routes = [
       {
         path: "user",
         element: User,
+      },
+       {
+        path: "dashboard",
+        element: Dashboard,
+      },
+       {
+        path: "movie",
+        element: Movie,
+      },
+       {
+        path: "profile",
+        element: Profile,
       },
     ],
   },

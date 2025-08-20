@@ -27,8 +27,9 @@ npm run dev
 - **Styling:** Tailwind CSS, SCSS  
 - **Form Handling & Validation:** React Hook Form  
 - **UI Components & Animations:** Flowbite  
-- **Version Control:** Git & GitHub
+- **Version Control:** Git & GitHub </br>
   ..................................
+
 
 
 

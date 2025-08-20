@@ -29,3 +29,4 @@ npm run dev
 - **UI Components & Animations:** Flowbite  
 - **Version Control:** Git & GitHub
 ..................................
+

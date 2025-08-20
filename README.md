@@ -28,3 +28,4 @@ npm run dev
 - **Form Handling & Validation:** React Hook Form  
 - **UI Components & Animations:** Flowbite  
 - **Version Control:** Git & GitHub
+..................................

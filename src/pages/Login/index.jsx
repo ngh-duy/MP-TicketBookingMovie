@@ -5,22 +5,27 @@ import { useMutation } from "@tanstack/react-query";
 import { login } from "../../service/auth.api";
 import { useForm } from "react-hook-form";
 import { NavLink, useNavigate } from "react-router-dom";
+import Toast from "../_components/Toast";
 export default function Login() {
   const [eye, setEye] = useState(false);
   const navigate = useNavigate();
+  const [toast, setToast] = useState(null);
   const { mutate, isPadding } = useMutation({
     mutationFn: (value) => login(value),
     onSuccess: (data) => {
       // console.log(data);
       localStorage.setItem("accessToken", JSON.stringify(data));
-      if (data.maLoaiNguoiDung == "QuanTri") {
-        navigate("/admin");
-      } else if (data.maLoaiNguoiDung == "KhachHang") {
-        navigate('/');
-      }
+      setToast({ type: 'success', message: 'Đăng nhập thành công' });
+      setTimeout(() => {
+        if (data.maLoaiNguoiDung == "QuanTri") {
+          navigate("/admin");
+        } else if (data.maLoaiNguoiDung == "KhachHang") {
+          navigate('/');
+        }
+      }, 900);
     },
   });
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = (data) => {
     mutate(data);
   };
@@ -34,24 +39,24 @@ export default function Login() {
               type="text"
               id="username"
               name="taiKhoan"
-              required
-              {...register("taiKhoan")}
+              {...register("taiKhoan", { required: 'Vui lòng nhập tài khoản', minLength: { value: 3, message: 'Tài khoản tối thiểu 3 ký tự' } })}
             />
             <label htmlFor="taiKhoan">Tài khoản</label>
+            {errors.taiKhoan ? (<small className="text-red-600">{errors.taiKhoan.message}</small>) : null}
           </div>
           <div className="input-group">
             <input
               type={eye ? "text" : "password"}
               id="password"
               name="matKhau"
-              required
-              {...register("matKhau")}
+              {...register("matKhau", { required: 'Vui lòng nhập mật khẩu', minLength: { value: 6, message: 'Mật khẩu tối thiểu 6 ký tự' } })}
             />
             <label htmlFor="matKhau">Mật khẩu</label>
             <i
               onClick={() => setEye(!eye)}
               className={`fa-regular ${eye ? "fa-eye" : "fa-eye-slash"}`}
             ></i>
+            {errors.matKhau ? (<small className="text-red-600">{errors.matKhau.message}</small>) : null}
           </div>
           <div className="checkPassword">
             <div>
@@ -67,6 +72,7 @@ export default function Login() {
           </div>
         </form>
       </div>
+      {toast ? (<Toast type={toast.type} message={toast.message} onClose={() => setToast(null)} />) : null}
     </section>
   );
 }

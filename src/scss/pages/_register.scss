@@ -66,6 +66,14 @@
           transform: translateY(-50%);
           color: rgba(0, 0, 0, 0.26);
         }
+        .error-message {
+          position: absolute;
+          bottom: -20px;
+          left: 50px;
+          color: #dc2626;
+          font-size: 12px;
+          font-weight: 400;
+        }
       }
       .checkPassword {
         font-size: 13px;

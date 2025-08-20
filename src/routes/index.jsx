@@ -9,11 +9,11 @@ import User from "../pages/AdminTemplate/User";
 import Dashboard from "../pages/AdminTemplate/Dashboard";
 import Profile from "../pages/AdminTemplate/Profile";
 import Movie from "../pages/AdminTemplate/Movie";
+import ProfileInfo from "../pages/HomeTemplate/Profile";
 
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 
-import Modal from "../pages/_components/modal";
 
 import { Route } from "react-router-dom";
 
@@ -37,6 +37,10 @@ const routes = [
       {
         path: "booking/:maphim",
         element: BookingMovie,
+      },
+      {
+        path: "profile",
+        element: ProfileInfo,
       },
     ],
   },
@@ -70,10 +74,7 @@ const routes = [
     path: "register",
     element: Register,
   },
-    {
-    path: "modal",
-    element: Modal,
-  },
+  
 
 ];
 export const renderRoute = () => {

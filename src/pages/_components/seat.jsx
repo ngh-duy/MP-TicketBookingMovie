@@ -354,7 +354,7 @@ const [detail, setDetail] = useState(false);
                   {userName?.hoTen ? mutate(value) : naviagte('/login')}
                   } }
               >
-                Xác nhận đặt vé
+                Đặt vé
               </button>
             </div>
           </div>

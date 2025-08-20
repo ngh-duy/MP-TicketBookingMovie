@@ -51,49 +51,36 @@ header {
         padding-left: 30px;
         display: flex;
         white-space: nowrap;
+        position: relative;
         svg {
           width: 30px;
           height: 30px;
         }
+        .submenu {
+          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          background-color: #232122;
+          padding: 10px 16px;
+          border-radius: 6px;
+          box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+          z-index: 50;
+          li {
+            padding: 6px 8px;
+            white-space: nowrap;
+            &:hover {
+              background-color: #333333;
+            }
+          }
+        }
+        &:hover .submenu {
+          display: block;
+        }
       }
     }
   }
-  .menuItem {
-    position: relative;
-    z-index: 10;
-    ul {
-      display: inline-block;
-      background-color: rgb(55, 58, 58);
-      padding: 10px 20px;
-      color: white;
-      li {
-        margin-bottom: 12px;
-        font-size: 15px;
-        font-weight: 470;
-      }
-    }
-    .menuItemTheLoai {
-      ul {
-        position: absolute;
-        top: 0;
-        margin-left: 120px;
-      }
-    }
-    .menuItemQuocGia {
-      ul {
-        position: absolute;
-        top: 0;
-        margin-left: 240px;
-      }
-    }
-    .menuItemNam {
-      ul {
-        position: absolute;
-        top: 0;
-        margin-left: 370px;
-      }
-    }
-  }
+  // Xóa block menuItem cũ (đã chuyển nested submenu)
 }
 @media screen and (max-width: 780px) {
   header {

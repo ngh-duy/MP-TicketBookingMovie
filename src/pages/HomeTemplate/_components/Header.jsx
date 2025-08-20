@@ -55,9 +55,7 @@ const accessToken = JSON.parse(localStorage.getItem('accessToken'));
             width={"100%"}
             placeholder="Search..."
           />
-          {accessToken ?  <div className=""><i class="fa-solid fa-user-secret" style={{color: '#ffffff',fontSize:'200%'}}></i></div> : <NavLink to='/login'><span className=" text-white text-xl font-medium px-3">Login</span></NavLink>}
-         
-          
+          {accessToken ?  <NavLink to='/profile' className=""><i class="fa-solid fa-user-secret" style={{color: '#ffffff',fontSize:'200%'}}></i></NavLink> : <NavLink to='/login'><span className=" text-white text-xl font-medium px-3">Login</span></NavLink>}
         </div>
         
         {openMenu ? (
@@ -175,24 +173,8 @@ const accessToken = JSON.parse(localStorage.getItem('accessToken'));
       </div>
       <nav >
         <ul>
-          <li  onClick={() =>
-              setItemMenu({
-                ...itemMenu,
-                menuItemTheLoai: false,
-                menuItemQuocGia: false,
-                menuItemNam: false,
-              })
-            } >Trang chủ</li>
-          <li
-            onClick={() =>
-              setItemMenu({
-                ...itemMenu,
-                menuItemTheLoai: true,
-                menuItemQuocGia: false,
-                menuItemNam: false,
-              })
-            }
-          >
+          <li>Trang chủ</li>
+          <li>
             Thể loại
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -204,17 +186,16 @@ const accessToken = JSON.parse(localStorage.getItem('accessToken'));
                 d="M17,9.17a1,1,0,0,0-1.41,0L12,12.71,8.46,9.17a1,1,0,0,0-1.41,0,1,1,0,0,0,0,1.42l4.24,4.24a1,1,0,0,0,1.42,0L17,10.59A1,1,0,0,0,17,9.17Z"
               ></path>
             </svg>
+            <ul className="submenu">
+              <li>Tình cảm</li>
+              <li>Kinh dị</li>
+              <li>Bi kịch</li>
+              <li>Học đường</li>
+              <li>Pháp sư</li>
+              <li>Xuyên không</li>
+            </ul>
           </li>
-          <li
-            onClick={() =>
-              setItemMenu({
-                ...itemMenu,
-                menuItemTheLoai: false,
-                menuItemQuocGia: true,
-                menuItemNam: false,
-              })
-            }
-          >
+          <li>
             Quốc gia{" "}
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -226,17 +207,17 @@ const accessToken = JSON.parse(localStorage.getItem('accessToken'));
                 d="M17,9.17a1,1,0,0,0-1.41,0L12,12.71,8.46,9.17a1,1,0,0,0-1.41,0,1,1,0,0,0,0,1.42l4.24,4.24a1,1,0,0,0,1.42,0L17,10.59A1,1,0,0,0,17,9.17Z"
               ></path>
             </svg>
+            <ul className="submenu">
+              <li>Việt Nam</li>
+              <li>Thái Lan</li>
+              <li>HongKong</li>
+              <li>Đài Loan</li>
+              <li>Nhật Bản</li>
+              <li>Hàn Quốc</li>
+              <li>Trung Quốc</li>
+            </ul>
           </li>
-          <li
-            onClick={() =>
-              setItemMenu({
-                ...itemMenu,
-                menuItemTheLoai: false,
-                menuItemQuocGia: false,
-                menuItemNam: true,
-              })
-            }
-          >
+          <li>
             Phim theo năm
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -248,62 +229,24 @@ const accessToken = JSON.parse(localStorage.getItem('accessToken'));
                 d="M17,9.17a1,1,0,0,0-1.41,0L12,12.71,8.46,9.17a1,1,0,0,0-1.41,0,1,1,0,0,0,0,1.42l4.24,4.24a1,1,0,0,0,1.42,0L17,10.59A1,1,0,0,0,17,9.17Z"
               ></path>
             </svg>
+            <ul className="submenu">
+              <li>2025</li>
+              <li>2024</li>
+              <li>2023</li>
+              <li>2022</li>
+              <li>2021</li>
+              <li>2020</li>
+              <li>2019</li>
+              <li>2018</li>
+              <li>2017</li>
+              <li>2016</li>
+            </ul>
           </li>
-          <li  onClick={() =>
-              setItemMenu({
-                ...itemMenu,
-                menuItemTheLoai: false,
-                menuItemQuocGia: false,
-                menuItemNam: false,
-              })
-            }>Phim Reels</li>
+          <li>Phim Reels</li>
         </ul>
         
       </nav>
-      <div className="menuItem">
-        {itemMenu.menuItemTheLoai ? (
-          <div className="menuItemTheLoai ">
-            <ul>
-              <li>Tình cảm</li>
-              <li>Kinh dị</li>
-              <li>Bi kịch</li>
-              <li>Học đường</li>
-              <li>Pháp sư</li>
-              <li>Xuyên không</li>
-            </ul>
-          </div>
-        ) : (
-          ""
-        )}
-        {itemMenu.menuItemQuocGia ? (
-          <div className="menuItemQuocGia ">
-            <ul>
-              <li>Tình cảm</li>
-              <li>Kinh dị</li>
-              <li>Bi kịch</li>
-              <li>Học đường</li>
-              <li>Pháp sư</li>
-              <li>Xuyên không</li>
-            </ul>
-          </div>
-        ) : (
-          ""
-        )}
-        {itemMenu.menuItemNam ? (
-          <div className="menuItemNam ">
-            <ul>
-              <li>Tình cảm</li>
-              <li>Kinh dị</li>
-              <li>Bi kịch</li>
-              <li>Học đường</li>
-              <li>Pháp sư</li>
-              <li>Xuyên không</li>
-            </ul>
-          </div>
-        ) : (
-          ""
-        )}
-      </div>
+      {/* Submenu desktop hiển thị khi hover (đã chuyển thành nested ul ở mỗi li) */}
     </header>
   );
 }
